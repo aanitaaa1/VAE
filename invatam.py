@@ -68,7 +68,7 @@ loss = recon + beta * kl  # L = Recon + beta * KL
 # print(W_sigma.shape, b_sigma.shape)
 # print(x.shape)
 # print(h.shape)
-##rint(logvar_z.shape)
+# print(logvar_z.shape)
 # print(logvar_z.shape)
 # print("KL:", kl)
 
