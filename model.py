@@ -88,7 +88,11 @@ def total_loss(X, mu_x, logvar_x, mu_z, logvar_z, beta=1.0):
     kl = 0.5 * torch.sum(mu_z**2 + torch.exp(logvar_z) - logvar_z - 1, dim=1)
     # total loss: average over the hours in the batch
     loss = torch.mean(recon + beta * kl)
-    return loss
+    return (
+        loss,
+        torch.mean(recon),
+        torch.mean(kl),
+    )  # total, Recon, KL (each averaged over the hours)
 
 
 if __name__ == "__main__":

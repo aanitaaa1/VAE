@@ -40,3 +40,11 @@ X_train = torch.tensor(X_train.values, dtype=torch.float32)
 # check
 print(X_train.shape)  # should be torch.Size([6270, 21])
 print(X_train[0])  # the first hour: one real x
+
+# test data: the year 2024 (hours the model never sees during training)
+df_test = df["2024-01-01":"2024-12-31"]
+
+# standardize with the SAME m and s as the training data (from 2023)
+X_test = (df_test - m) / s
+X_test = torch.tensor(X_test.values, dtype=torch.float32)
+print(X_test.shape)  # should be torch.Size([4841, 21])
