@@ -22,6 +22,36 @@ b_4mu = torch.zeros(d)  # 21: un bias pentru fiecare statie
 W_4sigma = torch.randn(d, H) * 0.1  # 21 x 128: la fel ca W_4mu
 b_4sigma = torch.zeros(d)  # 21
 
+# mark the parameters: PyTorch will compute their gradient
+W_h.requires_grad_()
+b_h.requires_grad_()
+W_mu.requires_grad_()
+b_mu.requires_grad_()
+W_sigma.requires_grad_()
+b_sigma.requires_grad_()
+W_3.requires_grad_()
+b_3.requires_grad_()
+W_4mu.requires_grad_()
+b_4mu.requires_grad_()
+W_4sigma.requires_grad_()
+b_4sigma.requires_grad_()
+
+# all 12 parameters in one list (the optimizer needs it)
+params = [
+    W_h,
+    b_h,
+    W_mu,
+    b_mu,
+    W_sigma,
+    b_sigma,
+    W_3,
+    b_3,
+    W_4mu,
+    b_4mu,
+    W_4sigma,
+    b_4sigma,
+]
+
 
 def encoder(X):
     a = X @ W_h.T + b_h
