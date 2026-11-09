@@ -148,3 +148,5 @@ print()
 print("direction   KL")
 for k in range(L):
     print(str(k + 1).ljust(11), round(kl_per_dim[k].item(), 2))
+
+torch.save(params, "vae_params.pt")
